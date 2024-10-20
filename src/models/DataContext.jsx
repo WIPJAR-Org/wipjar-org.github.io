@@ -1,8 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-
-const BASE_URL = "https://cogins.azurewebsites.net"
-// const BASE_URL = "http://localhost:8000"
+import config from '../config';
 
 export const DataContext = createContext();
 
@@ -34,7 +32,7 @@ export const DataProvider = ({ children }) => {
     console.log('here', filename,question, isTable);
     const requestData = {}
     try {
-        const response = await axios.post(BASE_URL+'/chat', formData, {
+        const response = await axios.post(config.api.url+'/chat', formData, {
         // headers: {
         //     'Content-Type': 'multipart/form-data',
         // },

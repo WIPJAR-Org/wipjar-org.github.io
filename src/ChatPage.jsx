@@ -6,8 +6,6 @@ import axios from 'axios';
 import Markdown from 'react-markdown'
 
 
-const BASE_URL = "https://cogins.azurewebsites.net"
-// const BASE_URL = "http://localhost:8000"
 const { Title, Paragraph, Text, Link } = Typography;
 
 const EllipsisMiddle = ({

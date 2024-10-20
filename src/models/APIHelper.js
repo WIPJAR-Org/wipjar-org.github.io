@@ -1,13 +1,11 @@
 // APIHelper.ts
 
 import axios from 'axios';
-
-const BASE_URL = 'https://cogins.azurewebsites.net';
-// const BASE_URL = 'http://localhost:8000';
+import config from '../config';
 
 // Create an axios instance with default config
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: config.api.url,
   timeout: 10000, // 10 seconds
   headers: {
     'Content-Type': 'application/json',

@@ -14,6 +14,7 @@ import * as XLSX from 'xlsx';
 import FileSaver from 'file-saver';
 import { DataProvider, DataContext } from './models/DataContext';
 import ChatPage from './ChatPage';
+import config from './config';
 
 const items = [
   {
@@ -39,9 +40,6 @@ const items = [
   },
 ]
 
-const BASE_URL = "https://cogins.azurewebsites.net"
-// const BASE_URL = "http://localhost:8000"
-
 const PdfUploader = () => {
   const { wipjarData, 
     updateData, resetLocalCache, fetchRequested, setFetchRequested,
@@ -64,7 +62,7 @@ const PdfUploader = () => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await axios.post(BASE_URL+'/extract_text', formData, {
+      const response = await axios.post(config.api.url+'/extract_text', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

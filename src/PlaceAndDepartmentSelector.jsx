@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Select, Spin, Segmented, Button, message } from 'antd';
 import axios from 'axios';
 import { DataContext } from './models/DataContext';
+import config from './config';
 
 const formatCurrentDate = (format) => {
     const today = new Date();
@@ -29,7 +30,7 @@ const PlaceAndDepartmentSelector = ({goChat}) => {
     const fetchData = async () => {
         setLoading(true)
         try {
-          const response = await axios.get(BASE_URL+'/wipplaces');
+          const response = await axios.get(config.api.url+'/wipplaces');
           setPlacesInfo(response.data);
           let exploreData = {}
           if(wipjarData && wipjarData.exploreData) {
@@ -59,10 +60,6 @@ const PlaceAndDepartmentSelector = ({goChat}) => {
         setPlaces(placesInfo.places)
     }
   }, [placesInfo])
-
-  const BASE_URL = "https://cogins.azurewebsites.net"
-
-  // const BASE_URL = "http://localhost:8000"
 
 
   const handlePlaceChange = (values) => {

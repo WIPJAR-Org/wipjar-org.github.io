@@ -4,9 +4,7 @@ import { message, Upload, Button } from 'antd';
 import { DataContext } from './models/DataContext';
 const { Dragger } = Upload;
 import axios from 'axios';
-
-// const BASE_URL = "https://cogins.azurewebsites.net"
-const BASE_URL = "http://localhost:8000"
+import config from './config';
 
 const Uploader = ( ) => {
     const { wipjarData, setFetchRequested, 
@@ -19,7 +17,7 @@ const Uploader = ( ) => {
         const formData = new FormData();
         formData.append('file', file);
         try {
-            const response = await axios.post(BASE_URL+'/extract_text', formData, {
+            const response = await axios.post(config.api.url+'/extract_text', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
