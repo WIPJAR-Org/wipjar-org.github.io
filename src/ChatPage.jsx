@@ -4,6 +4,7 @@ import { Select, Space, Card, Badge, Popover } from 'antd';
 import { DataContext } from './models/DataContext';
 import axios from 'axios';
 import Markdown from 'react-markdown'
+import PropTypes from 'prop-types';
 
 
 const { Title, Paragraph, Text, Link } = Typography;
@@ -21,8 +22,13 @@ const EllipsisMiddle = ({
   );
 };
 
+EllipsisMiddle.propTypes = {
+  suffixCount: PropTypes.number.isRequired,
+  children: PropTypes.string.isRequired,
+};
+
 const ChatPage = ( {onSwitch, onExplore} ) => {
-    const { wipjarData, setFetchRequested, askQuestion,
+  const { wipjarData, setFetchRequested, askQuestion,
         updateData, resetLocalCache, resetChatHistory, appendExtractedData,
         fetchOne } = useContext(DataContext);
   const [messages, setMessages] = useState((wipjarData && wipjarData.messages) || []);
@@ -228,7 +234,14 @@ const ChatPage = ( {onSwitch, onExplore} ) => {
     <Button type="primary" onClick={onSwitch}>Upload Files</Button>
     <p> OR </p>
     <Button type="primary" onClick={onExplore}>Explore</Button>
-  </Empty>)
+  </Empty>
+  );
 };
+
+ChatPage.propTypes = {
+  onSwitch: PropTypes.func.isRequired,
+  onExplore: PropTypes.func.isRequired,
+};
+
 
 export default ChatPage;

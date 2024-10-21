@@ -111,7 +111,7 @@ const PlaceAndDepartmentSelector = ({goChat}) => {
     }
     formData.append('options', JSON.stringify(options));
     try {
-        const response = await axios.post(BASE_URL+'/chat_explore', formData);
+        const response = await axios.post(config.api.url+'/chat_explore', formData);
         // const responseData = JSON.parse(response.data)
         const exploreResponse = response.data
         if(exploreResponse.success) {
